@@ -1,0 +1,29 @@
+List only filenames in a commit:
+git diff-tree --no-commit-id --name-only -r <commitID>
+
+Unset credential helper:
+git config --global --unset credential.helper
+
+Set credential helper to wincred:
+git config --global credential.helper wincred
+
+Get my files:
+git log --pretty="%H" --author="SYED ALI" | while read commit_hash; do git show --oneline --name-only $commit_hash | tail -n+2; done | sort | uniq
+-----------------------------------------------
+Update remote URL:
+-----------------------------------------------
+$ git remote -v
+$ git remote set-url origin <url>
+$ git remote -v
+
+-------------------------------------
+Diff between two branches, ignore pom.xml, get top level directory
+-------------------------------------
+git diff --name-only <tag1>..<tag2> | sed '/pom.xml/d' | cut -d "/" -f1 | sort | uniq
+git diff --name-only <tag1>..<tag2>
+git diff --name-only <branch1>..<branch2>
+-------------------------------------------
+Between tags commit message
+-------------------------------------------
+git log --pretty=oneline <tag1>..<tag2>
+git log <tag1>..<tag2> --oneline
