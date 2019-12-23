@@ -1,0 +1,23 @@
+operate between head and footer for data files:
+:/START-OF-DATA/+1,/END-OF-DATA/-1s/\%1c/"\1/
+remove leading spaces:
+:%s/^\s\+
+remove function like cast:
+%s/cast (\(\_.\{-}\) as \_.\{-})\{1,2}\ze/\1/e
+delete all lines between start and end of data not starting with 312, 313
+:/START-OF-DATA/+1,/END-OF-DATA/-1v/^312\|^313/d
+
+Backward search for the task name:
+?<task name>
+
+Match two patterns:
+/a1\|b1/m$
+
+Match pattern1 followed by pattern two:
+/.*pattern1\&.*pattern2
+
+delete all:
+dG
+
+copy all:
+gg"*yG
