@@ -1,0 +1,14 @@
+Get unique values of the 96th field of a pipe delimited file between start and end of data
+sed -n '/START-OF-DATA/,/END-OF-DATA/{p}' file.dat | cut -d "|" -f 96 | sort | uniq | grep -v START-OF-DATA | grep -v END-OF-DATA
+
+output to screen and append to file:
+roll.sh | tee -a logfile.text
+
+find all files list details e-mail output of files with subject:
+find . -type f | xargs ls -ltr | mailx -s "files in primary processing" user@domain.com
+
+space used only in current directory:
+du -h --max-depth=1 .
+
+replace character in output with newline
+echo $PATH | tr ':' '\n' > path.txt
